@@ -14,7 +14,8 @@
         <h1>{{ title }}</h1>
         <div>
             <input type="text" placeholder="Digite para gerar..." size="25" v-model="text">
-      
+            <p>Color for QR:</p>
+            <input v-model="color" type="color">
         </div>
         <div class="output" v-if="text">
 
@@ -36,6 +37,7 @@
                 title: "Gerador de QRCode",
                 text: "Test",
                 qrcode: new QRious({ size: 300 }), // Aqui ele gera um novo QRCODE (Here it generates a new QRCODE)
+                color: '#000'
 
 
             },
@@ -47,6 +49,7 @@
                      (If the text is changed it will generate a new QRcode)
                     */
                     this.qrcode.value = this.text
+                    this.qrcode.foreground = this.color;
                     return this.qrcode.toDataURL()
                 }
             }
